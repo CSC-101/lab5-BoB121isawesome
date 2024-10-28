@@ -13,7 +13,13 @@ class Time:
         self.minute = minute
         self.second = second
 
+    def __repr__(self):
+        return "Hour = {}, Minute = {}, Second = {}".format(self.hour, self.minute, self.second)
 
+    def __eq__(self, other):
+        return (other is self or type(other) == Time and
+                math.isclose(self.hour, other.hour) and math.isclose(self.minute, other.minute)
+                and math.isclose(self.second, other.second))
     # Provide a developer-friendly string representation of the object.
     # input: Time for which a string representation is desired. 
     # output: string representation
